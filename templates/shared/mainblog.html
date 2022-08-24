@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/mainstyle.css' %}">
+    <title>
+        {% block title %}
+            
+        {% endblock title %}
+    </title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">BURGERKING BLOG</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
+              {% if request.user.is_authenticated %}
+              <li class="nav-item">
+                 {% if request.user.first_name and request.user.last_name %}
+                 <a class="nav-link active" aria-current="page" href="#">
+                   Welcome Back, {{ request.user.first_name }}  {{ request.user.last_name }}
+                 </a>
+                
+                 {% else %}
+                 <a class="nav-link active" aria-current="page" href="#">
+                  Welcome Back, {{ request.user.username }}
+                </a>
+                 
+                 {% endif %}
+              </li>
+             
+              <li class="nav-item">
+                <a href="{% url 'createpost' %}" class="nav-link">New Post</a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'logout' %}" class="nav-link">Log Out</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Register</a>
+              </li>
+             
+              <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link">Log In</a>
+              </li>
+              {% endif %}
+              
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+</div>
+
+
+{% block maincontent %}
+    
+{% endblock maincontent %}
+
+<footer>
+
+</footer>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

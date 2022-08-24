@@ -1,0 +1,38 @@
+ {% extends 'shared/mainblog.html' %}
+{% load humanize %}
+
+{% block title %}
+Welcome to the Bugerking Blog
+{% endblock title %}
+
+
+{% block maincontent %}
+
+<section class="container">
+    <h3>Recent Blog Post</h3>
+    <div class="row">
+        {% for item in posts %}
+        <div class="col-md-4 p-3">
+            <div class="card mb-4 m-2" style="width: 18rem;">
+               {% if item.post_img %}
+               <img src="{{item.post_img.url}}" class="card-img-top" alt="...">
+               {% else %}
+               <img src="media/default.png" class="card-img-top" alt="...">
+               {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title"> {{item.title | truncatewords_html:3}} </h5>
+                  <p class="card-text">
+                    {{ item.body | truncatewords_html:7  }}
+                  </p>
+                  <a href="{% url 'postdetail' id=item.id %}" class="btn btn-primary">More</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+      
+    </div>
+</section>
+
+{% endblock maincontent %}

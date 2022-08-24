@@ -1,0 +1,22 @@
+{% extends 'shared/mainblog.html' %}
+{% load humanize %}
+
+{% block title %}
+Welcome to the Bugerking Blog
+{% endblock title %}
+
+
+{% block maincontent %}
+<section class="container">
+    <h3> Sign Up </h3>
+    <div class="row">
+        <div class="col-md-10 p-3">
+           <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p}}
+            <button type="submit">Register</button>
+           </form>
+        </div>
+    </div>
+</section>
+{% endblock maincontent %}
