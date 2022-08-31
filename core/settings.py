@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-&91ax!6x2g7c!cw-_3dc#by3svsfaks7fly7tog8ag-ahny+18
 # DEBUG = True
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.10.174.21','*']
+ALLOWED_HOSTS = ['18.132.60.36','*']
 
 
 # Application definition
@@ -81,11 +81,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME':'burgermandb',
-        'USER':'postgresbking',
-        # 'USER':'postgres',
-        'PASSWORD':'dove24',
+        # 'USER':'postgresbking',
+        'USER':'postgres',
+        'PASSWORD':'CHUK1993',
         'HOST': '127.0.0.1',
-        'PORT':'5432'
+        'PORT':'5433'
     }
 }
 
@@ -135,6 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT=BASE_DIR/'static'
 STATICFILES_DIRS = [BASE_DIR / 'core/static']
 
 # Default primary key field type
@@ -149,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
